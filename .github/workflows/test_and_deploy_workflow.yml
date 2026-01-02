@@ -1,0 +1,27 @@
+# This is a workflow for running tests
+name: Test project
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code 
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: echo "Install dependencies" #check if we need this for android 
+      - name: Run test 
+        run: ./gradlew test #gradle run tests
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code 
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: echo "Install dependencies" #check if we need this for android
+      - name: Run test 
+        run: ./gradlew test #gradle run tests
+      - name: Build code 
+        run: ./gradlew assembleDebug #or release build 
+      - name: Deploy
+        run: echo "Deploying..."
+ 
